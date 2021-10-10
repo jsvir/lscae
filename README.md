@@ -10,11 +10,19 @@
 
 ## How to use:
 
-Please see an example [here](https://github.com/jsvir/lscae/blob/master/example.ipynb)
 
-`import lscae`
-`import torch`
-`# define your dataset`
-`# define you cfg parameters`
-`dataloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.batch_size, shuffle=True, drop_last=True)`
-`lscae.Lscae(kwargs=cfg).select_features(dataloader)`
+```python
+import lscae
+import torch
+from omegaconf import OmegaConf
+
+# define you cfg parameters
+cfg = OmegaConf.create({
+    "input_dim": 100 })
+# define you dataset (Torch based)
+dataset = torch.utils.data.Dataset(...)
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.batch_size, shuffle=True, drop_last=True)
+lscae.Lscae(kwargs=cfg).select_features(dataloader)
+```
+
+Please see the full example [here](https://github.com/jsvir/lscae/blob/master/example.ipynb)
