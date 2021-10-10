@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lscae-jsvir",
+    name="lscae",
     version="0.0.1",
     author="Jonathan Svirsky",
     author_email="js@alumni.technion.ac.il",

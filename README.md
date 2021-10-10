@@ -10,4 +10,6 @@
 
 ## How to use:
 
-Please see an example [here]()
+Please see an example [here](https://github.com/jsvir/lscae/blob/master/example.ipynb)
+
+`import lscae`
