@@ -13,3 +13,8 @@
 Please see an example [here](https://github.com/jsvir/lscae/blob/master/example.ipynb)
 
 `import lscae`
+`import torch`
+`# define your dataset`
+`# define you cfg parameters`
+`dataloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.batch_size, shuffle=True, drop_last=True)`
+`lscae.Lscae(kwargs=cfg).select_features(dataloader)`
