@@ -10,6 +10,8 @@
 
 ## How to use:
 
+Install the package from pypi:
+`pip install lscae`
 
 ```python
 import lscae
