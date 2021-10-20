@@ -10,6 +10,15 @@
 
 ## How to use:
 
+In first, prepare your dataset by applying Standard Scaler on it
+
+```python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+dataset = scaler.fit_transform(dataset)
+```
+
+Then load it as `torch.utils.data.Dataset` and run feature selection
 
 ```python
 import lscae
