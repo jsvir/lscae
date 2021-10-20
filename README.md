@@ -10,6 +10,18 @@
 
 ## How to use:
 
+Install the package from pypi:
+`pip install lscae`
+
+Prepare your dataset by applying Standard Scaler on it
+
+```python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+dataset = scaler.fit_transform(dataset)
+```
+
+Then load it as `torch.utils.data.Dataset` and run feature selection
 Please see an example [here](https://github.com/jsvir/lscae/blob/master/example.ipynb)
 
 `import lscae`
