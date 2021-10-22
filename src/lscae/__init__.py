@@ -28,7 +28,8 @@ class Lscae(nn.Module):
             "start_temp": 10,           # Initial temperature
             "min_temp": 1e-2,           # Final temperature
             "rec_lambda": .5,           # Balance between reconstruction and LS terms
-            "num_epochs": 300,          # Number of training epochs
+            "fr_penalty": 1e1,          # Feature redundancy penalty
+            "num_epochs": 500,          # Number of training epochs
             "verbose": True             # Whether to print to console during training
         })
         self.cfg.input_dim = input_dim
@@ -194,7 +195,7 @@ class Lscae(nn.Module):
 
         # feature redundancy penalty
         max_occurances = torch.max(torch.sum(self.selector.get_weights(epoch=current_epoch), dim=1))
-        fr_penalty = torch.max(torch.tensor(0, device=self.device), max_occurances - 1) * 1e5
+        fr_penalty = torch.max(torch.tensor(0).to(device=self.device), max_occurances - 1) * self.cfg.fr_penalty
         loss += fr_penalty
 
         self.optim.zero_grad()
@@ -226,7 +227,7 @@ class Lscae(nn.Module):
 
             self.update_lr()
         print('Finished training LS-CAE')
-        selected_features = self.get_selected_feats()
+        selected_features = set(self.get_selected_feats())
         print('Selected features:', selected_features)
         return selected_features
 
