@@ -28,7 +28,7 @@ class Lscae(nn.Module):
             "start_temp": 10,           # Initial temperature
             "min_temp": 1e-2,           # Final temperature
             "rec_lambda": .5,           # Balance between reconstruction and LS terms
-            "fr_penalty": 1e1,          # Feature redundancy penalty
+            "fr_penalty": 0,            # Feature redundancy penalty
             "num_epochs": 500,          # Number of training epochs
             "verbose": True             # Whether to print to console during training
         })
@@ -280,13 +280,13 @@ class SelectLayer(nn.Module):
         self.min_temp = torch.tensor(self.cfg.min_temp)
         self.logits = torch.nn.Parameter(torch.zeros(self.input_features, self.output_features), requires_grad=True)
 
-    def current_temp(self, epoch, type='linear'):
+    def current_temp(self, epoch, sched_type='exponential'):
         schedules = {
             'exponential': torch.max(self.min_temp, self.start_temp * ((self.min_temp / self.start_temp) ** (epoch / self.num_epochs))),
             'linear': torch.max(self.min_temp, self.start_temp - (self.start_temp - self.min_temp) * (epoch / self.num_epochs)),
             'cosine': self.min_temp + 0.5 * (self.start_temp - self.min_temp) * (1. + np.cos(epoch * math.pi / self.num_epochs))
         }
-        return schedules[type]
+        return schedules[sched_type]
 
     def forward(self, x, epoch=None):
         from torch.distributions.uniform import Uniform
