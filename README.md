@@ -41,10 +41,10 @@ lscae.Lscae(kwargs=cfg).select_features(dataloader)
 
 If you use this code, please cite the publication:
 
-`@article{shaham2022deep,
+```@article{shaham2022deep,
   title={Deep unsupervised feature selection by discarding nuisance and correlated features},
   author={Shaham, Uri and Lindenbaum, Ofir and Svirsky, Jonathan and Kluger, Yuval},
   journal={Neural Networks},
   year={2022},
   publisher={Elsevier}
-}`
+}```
