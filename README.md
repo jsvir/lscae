@@ -1,4 +1,4 @@
-# Laplacian Score-regularized Concrete Autoencoders
+# [Deep unsupervised feature selection by discarding nuisance and correlated features](https://doi.org/10.1016/j.neunet.2022.04.002)
 
 ## Requirements:
 
@@ -38,3 +38,13 @@ dataset = torch.utils.data.Dataset(...)
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=cfg.batch_size, shuffle=True, drop_last=True)
 lscae.Lscae(kwargs=cfg).select_features(dataloader)
 ```
+
+If you use this code, please cite the publication:
+
+`@article{shaham2022deep,
+  title={Deep unsupervised feature selection by discarding nuisance and correlated features},
+  author={Shaham, Uri and Lindenbaum, Ofir and Svirsky, Jonathan and Kluger, Yuval},
+  journal={Neural Networks},
+  year={2022},
+  publisher={Elsevier}
+}`
