@@ -1,5 +1,8 @@
 # [Deep unsupervised feature selection by discarding nuisance and correlated features](https://doi.org/10.1016/j.neunet.2022.04.002)
 
+# Updates:
+* The pypi package was broken, now it is fixed.
+
 ## Requirements:
 
 * torch >= 1.9
